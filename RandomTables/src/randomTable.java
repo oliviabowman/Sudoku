@@ -2,19 +2,15 @@
 import java.util.Random;
 
 public class randomTable {
-    //    public static final int row = 9;
-//    public static final int col = 9;
+
     int row = 9;
     int col = 9;
     public static final int SIZE = 9;
-    //    public static final int missing = 10;
-//    int missing = 10;
     int[][] board;
 
     public randomTable(int row, int col) {
         this.row = row;
         this.col = col;
-//        this.missing = missing;
         board = new int[row][col];
 
     }
@@ -64,13 +60,27 @@ public class randomTable {
     public void Fill(){
         for (int i = 0; i < row; i++){
             for (int j = 0; j < col; j++) {
-                Random rand = new Random();
-                int n = rand.nextInt(9) + 1;
-                board[i][j] = n;
-
-
+//                Random rand = new Random();
+//                int n = rand.nextInt(9) + 1;
+//                if (isFine(i, j, n)) {
+//                    board[i][j] = n;
+//                } else {
+//                    board[i][j] = 0;
+//                }
+                board[i][j] = random(i, j);
             }
         }
+    }
+
+    public int random(int row, int col) {
+        Random rand = new Random();
+        int n = rand.nextInt(9) + 1;
+        if (isFine(row, col, n)) {
+            return n;
+        } else {
+            return random(row, col);
+        }
+
     }
 
 
