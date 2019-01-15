@@ -58,29 +58,21 @@ public class randomTable {
     }
 
     public void Fill(){
+        int num;
         for (int i = 0; i < row; i++){
             for (int j = 0; j < col; j++) {
-//                Random rand = new Random();
-//                int n = rand.nextInt(9) + 1;
-//                if (isFine(i, j, n)) {
-//                    board[i][j] = n;
-//                } else {
-//                    board[i][j] = 0;
-//                }
-                board[i][j] = random(i, j);
+                num = random();
+                while (isFine(i, j, num)) {
+                    board[i][j] = random();
+                }
             }
         }
     }
 
-    public int random(int row, int col) {
+    public int random() {
         Random rand = new Random();
-        int n = rand.nextInt(9) + 1;
-        if (isFine(row, col, n)) {
-            return n;
-        } else {
-            return random(row, col);
-        }
-
+        int n = rand.nextInt(8) + 1;
+        return n;
     }
 
 
